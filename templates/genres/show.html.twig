@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rock & Roule{% endblock %}
+
+{% block body %}
+    <h1 class="text-center font-monospace text-warning">Genres</h1>
+
+    <table class="table table-striped text-warning font-monospace">
+        <tbody>
+            <tr>
+                <th class="text-center text-warning font-monospace">Nom</th>
+                <th class="text-center text-warning font-monospace">Numéro</th>
+            </tr>
+            <tr>
+                
+                <td class="text-light">{{ genre.name }}</td>
+                <td class="text-light">{{ genre.genreid }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex flex-row justify-content-center">
+        <a href="{{ path('genres_index') }}" class="btn btn-primary m-1">Retour Liste</a>
+
+        <a href="{{ path('genres_edit', {'genreid': genre.genreid}) }}" class="m-1 btn btn-success">Editer</a>
+
+        {{ include('genres/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

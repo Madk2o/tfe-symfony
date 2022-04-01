@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('media_types_delete', {'mediatypeid': media_type.mediatypeid}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ media_type.mediatypeid) }}">
+    <button class="btn btn-danger m-1">Effacer</button>
+</form>

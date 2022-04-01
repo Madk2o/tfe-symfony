@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rock & Roule{% endblock %}
+
+{% block body %}
+    <h1 class="text-center text-warning font-monospace">Playlists</h1>
+
+    <table class="table table-striped text-light font-monospace">
+        <tbody>
+            <tr><th class="text-warning">Numéro</th>
+                <th class="text-warning">Nom</th>
+                
+            </tr>
+            <tr>
+                <td class="text-light">{{ playlist.playlistid }}</td>
+                <td class="text-light">{{ playlist.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex flex-row justify-content-center">
+        <a href="{{ path('playlists_index') }}" class="btn btn-primary m-1">Retour liste</a>
+
+        <a href="{{ path('playlists_edit', {'playlistid': playlist.playlistid}) }}" class="m-1 btn btn-success">Edit</a>
+
+        {{ include('playlists/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

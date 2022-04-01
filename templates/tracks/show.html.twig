@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rock & Roule{% endblock %}
+
+{% block body %}
+    <h1 class="text-center text-warning font-monospace">Tracks</h1>
+
+    <table class="table text-light font-monospace">
+        <tbody class="table">
+            <tr>
+                <th class="text-warning">Track</th>
+                <td class="text-light">{{ track.trackid }}</td>
+            </tr>
+            <tr>
+                <th class="text-warning">Nom</th>
+                <td class="text-light">{{ track.name }}</td>
+            </tr>
+            <tr>
+                <th class="text-warning">Composer</th>
+                <td class="text-light">{{ track.composer }}</td>
+            </tr>
+            <tr>
+                <th class="text-warning">Millisecondes</th>
+                <td class="text-light">{{ track.milliseconds }}</td>
+            </tr>
+            <tr>
+                <th class="text-warning">Bites</th>
+                <td class="text-light">{{ track.bytes }}</td>
+            </tr>
+            <tr>
+                <th class="text-warning">Prix</th>
+                <td class="text-light">{{ track.unitprice }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex flex-row justify-content-center">
+        <a href="{{ path('tracks_index') }}" class="btn btn-primary m-1">Retour liste</a>
+        <a href="{{ path('tracks_edit', {'trackid': track.trackid}) }}" class="m-1 btn btn-success">Edit</a>
+
+        {{ include('tracks/_delete_form.html.twig') }}
+
+    </div>    
+{% endblock %}

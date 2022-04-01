@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rock & Roule{% endblock %}
+
+{% block body %}
+    <h1 class="text-center text-warning font-monospace">MediaTypes</h1>
+
+    <table class="table table-striped text-light font-monospace">
+        <tbody class="table">
+            <tr>
+                <th class="text-warning">Mediatypeid</th>
+                <th class="text-warning">Nom</th>
+            </tr>
+            <tr>
+                <td class="text-light">{{ media_type.mediatypeid }}</td>
+                <td class="text-light">{{ media_type.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <div class="d-flex flex-row justify-content-center">
+        <a href="{{ path('media_types_index') }}" class="btn btn-primary m-1">Retour Liste</a>
+        <a href="{{ path('media_types_edit', {'mediatypeid': media_type.mediatypeid}) }}" class="m-1 btn btn-success">Edit</a>
+
+        {{ include('media_types/_delete_form.html.twig') }}
+
+    </div>   
+{% endblock %}

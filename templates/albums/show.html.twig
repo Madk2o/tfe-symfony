@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Albums{% endblock %}
+
+{% block body %}
+    <h1 class="text-center font-monospace">Albums</h1>
+
+    <table class="table table-striped text-light font-monospace">
+        <tbody>
+            <tr class="d-flex justify-content-center align-items-center">
+                <th class="text-warning">Album</th>
+                <td class="text-warning">{{ album.albumid }}</td>
+            </tr>
+            <tr>
+                <th class="text-warning">Titre</th>
+                <td>{{ album.title }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex flex-row justify-content-center">
+        <a href="{{ path('albums_index') }}" class="btn btn-primary m-1">Retour Liste</a>
+
+        <a href="{{ path('albums_edit', {'albumid': album.albumid}) }}" class="m-1 btn btn-success">Edit</a>
+
+        {{ include('albums/_delete_form.html.twig') }}
+    </div>    
+{% endblock %}

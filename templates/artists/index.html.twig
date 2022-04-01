@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rock & Roule{% endblock %}
+
+{% block body %}
+    <h1 class="font-monospace text-center bg-dark text-warning m-0 p-0">🔥 Artists On fire 🔥</h1>
+
+    <table class="font-monospace table table-dark  table-bordered border-dark ">
+        <thead class="text-warning">
+            <tr>
+                <th>Numéro Artiste</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for artist in artists %}
+            <tr>
+                <td class="text-center">{{ artist.artistid }}</td>
+                <td><a href="{{ path('albums_artist',{'artistid': artist.artistid} ) }}" >{{ artist.name }}</a></td>
+                <td class="d-flex justify-content-center">
+                    <a href="{{ path('artists_show', {'artistid': artist.artistid}) }}" class="btn btn-primary me-1">Show</a>
+                    <a href="{{ path('artists_edit', {'artistid': artist.artistid}) }}" class="btn btn-success me-1">Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found{{ path('artists_new') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-center">
+        {{ knp_pagination_render(artists) }}
+    </div>
+    <div class="d-flex justify-content-center bg-dark m-2">
+        <a href="{{ path('artists_new') }}" class="btn btn-warning m-2">Ajout Nouveau</a>
+    </div>
+{% endblock %}

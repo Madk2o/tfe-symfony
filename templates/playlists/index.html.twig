@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rock & Roule{% endblock %}
+
+{% block body %}
+    <h1 class="font-monospace text-center bg-dark text-warning m-0 p-0">Playlists</h1>
+
+    <table class="font-monospace table table-dark table-bordered border-dark">
+        <thead class="text-warning">
+            <tr>
+                <th>Numéro</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for playlist in playlists %}
+            <tr>
+                <td>{{ playlist.playlistid }}</td>
+                <td>{{ playlist.name }}</td>
+                <td class="d-flex justify-content-center">
+                    <a href="{{ path('playlists_show', {'playlistid': playlist.playlistid}) }}" class="btn btn-primary">Show</a>
+                    <a href="{{ path('playlists_edit', {'playlistid': playlist.playlistid}) }}" class="btn btn-success">Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-center">   
+        {{ knp_pagination_render(playlists)}}
+    </div>
+    <div class="d-flex justify-content-center bg-dark">
+        <a href="{{ path('playlists_new') }}" class="btn btn-warning m-2">Ajout nouveau</a>
+        <a class="navbar-brand img" href="{{ path('artists_index') }}"><img src="{{ asset('images/Rock&Roule5.jpg') }}"/></a>
+    </div>
+{% endblock %}

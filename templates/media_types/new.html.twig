@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rock & Roule{% endblock %}
+
+{% block body %}
+    <h1 class="font-monospace text-center bg-dark text-warning m-0 p-0">Ajout Nouveau</h1>
+
+    <div class="d-flex justify-content-between flex-column m-1">
+        <div class="d-flex justify-content-center align-content-between p-1 m-1">
+            {{ include('media_types/_form.html.twig') }}
+        </div>
+
+        <div class="d-flex justify-content-center m-1">
+            <a href="{{ path('media_types_index') }}" class="btn btn-primary justify-content-center">Retour Liste</a>
+        </div>
+    
+    </div>
+
+{% endblock %}
